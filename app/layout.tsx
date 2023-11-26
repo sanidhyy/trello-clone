@@ -1,3 +1,4 @@
+import { PropsWithChildren } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -20,11 +21,7 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
