@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
-import Navbar from "./_components/navbar";
+
+import { Navbar } from "./_components/navbar";
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (

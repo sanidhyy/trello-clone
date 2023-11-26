@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-import OrgControl from "./_components/org-control";
+import { OrgControl } from "./_components/org-control";
 
 const OrganizationIdLayout = ({ children }: PropsWithChildren) => {
   return (
