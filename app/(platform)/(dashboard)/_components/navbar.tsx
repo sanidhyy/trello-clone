@@ -1,7 +1,13 @@
-import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  OrganizationSwitcher,
+  UserButton,
+} from "@clerk/nextjs";
 import { Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { Logo } from "@/components/logo";
 import { MobileSidebar } from "./mobile-sidebar";
@@ -25,32 +31,41 @@ export const Navbar = () => {
       </div>
 
       <div className="ml-auto flex items-center gap-x-2">
-        <OrganizationSwitcher
-          hidePersonal
-          afterCreateOrganizationUrl="/organization/:id"
-          afterLeaveOrganizationUrl="/select-org"
-          afterSelectOrganizationUrl="/organization/:id"
-          appearance={{
-            elements: {
-              rootBox: {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+        <ClerkLoading>
+          <Skeleton className="h-10 w-40" />
+          <Skeleton className="h-10 w-10" />
+        </ClerkLoading>
+        <ClerkLoaded>
+          <OrganizationSwitcher
+            hidePersonal
+            afterCreateOrganizationUrl="/organization/:id"
+            afterLeaveOrganizationUrl="/select-org"
+            afterSelectOrganizationUrl="/organization/:id"
+            appearance={{
+              elements: {
+                rootBox: {
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
               },
-            },
-          }}
-        />
-        <UserButton
-          afterSignOutUrl="/"
-          appearance={{
-            elements: {
-              avatarBox: {
-                height: 30,
-                width: 30,
+            }}
+          />
+          <UserButton
+            afterSignOutUrl="/"
+            appearance={{
+              elements: {
+                avatarBox: {
+                  height: 30,
+                  width: 30,
+                },
+                loaderIcon: {
+                  display: "block",
+                },
               },
-            },
-          }}
-        />
+            }}
+          />
+        </ClerkLoaded>
       </div>
     </nav>
   );
