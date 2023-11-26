@@ -6,6 +6,11 @@ export default function CreateOrganizationPage() {
       hidePersonal
       afterSelectOrganizationUrl="/organization/:id"
       afterCreateOrganizationUrl="/organization/:id"
+      appearance={{
+        layout: {
+          logoPlacement: "none",
+        },
+      }}
     />
   );
 }
