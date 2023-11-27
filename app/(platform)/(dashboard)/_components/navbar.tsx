@@ -33,7 +33,7 @@ export const Navbar = () => {
       <div className="ml-auto flex items-center gap-x-2">
         <ClerkLoading>
           <Skeleton className="h-10 w-40" />
-          <Skeleton className="h-10 w-10" />
+          <Skeleton className="h-10 w-10 rounded-full" />
         </ClerkLoading>
         <ClerkLoaded>
           <OrganizationSwitcher
