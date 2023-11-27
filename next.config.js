@@ -8,6 +8,14 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        "localhost:3000",
+        "bug-free-broccoli-557rxgv5wg4fvwgq-3000.app.github.dev",
+      ],
+    },
+  },
 };
 
 module.exports = nextConfig;
