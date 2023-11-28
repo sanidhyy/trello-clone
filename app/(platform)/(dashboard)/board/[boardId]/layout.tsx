@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
 
+import { BoardNavbar } from "./_components/board-navbar";
 import { db } from "@/lib/db";
 
 export async function generateMetadata({
@@ -49,6 +50,8 @@ const BoardIdLayout = async ({
       style={{ backgroundImage: `url(${board.imageFullUrl})` }}
       className="relative h-full bg-no-repeat bg-cover bg-center"
     >
+      <BoardNavbar data={board} />
+      <div aria-hidden className="absolute inset-0 bg-black/10" />
       <main className="relative pt-28 h-full">{children}</main>
     </div>
   );
