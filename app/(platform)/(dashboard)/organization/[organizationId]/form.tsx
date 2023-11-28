@@ -4,6 +4,7 @@ import { useFormState } from "react-dom";
 
 import { Button } from "@/components/ui/button";
 
+import { FormInput } from "@/components/form/form-input";
 import { createBoard } from "@/actions/create-board";
 import { useAction } from "@/hooks/use-action";
 
@@ -26,25 +27,8 @@ export const Form = () => {
   return (
     <form action={onSubmit}>
       <div className="flex flex-col space-y-2">
-        <input
-          type="text"
-          id="title"
-          name="title"
-          placeholder="Enter a board title"
-          className="border border-black p-1"
-          required
-        />
+        <FormInput label="Board title" id="title" errors={fieldErrors} />
       </div>
-
-      {fieldErrors?.title ? (
-        <div className="">
-          {fieldErrors.title.map((error: string) => (
-            <p key={error} className="text-rose-500">
-              {error}
-            </p>
-          ))}
-        </div>
-      ) : null}
       <Button type="submit">Submit</Button>
     </form>
   );
