@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 import { Navbar } from "./_components/navbar";
 import { Footer } from "./_components/footer";

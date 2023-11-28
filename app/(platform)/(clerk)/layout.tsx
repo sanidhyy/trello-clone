@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 const ClerkLayout = ({ children }: PropsWithChildren) => {
   return (
