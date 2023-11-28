@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 
 import { FormInput } from "@/components/form/form-input";
 import { FormSubmit } from "@/components/form/form-submit";
+import { FormPicker } from "@/components/form/form-picker";
 import { useAction } from "@/hooks/use-action";
 import { createBoard } from "@/actions/create-board";
 
@@ -31,11 +32,9 @@ export const FormPopover = ({
 }: FormPopoverProps) => {
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
-      console.log(data);
       toast.success("Board created.");
     },
     onError: (error) => {
-      console.log(error);
       toast.error(error);
     },
   });
@@ -69,6 +68,7 @@ export const FormPopover = ({
 
         <form action={onSubmit} className="space-y-4">
           <div className="space-y-4">
+            <FormPicker id="image" errors={fieldErrors} />
             <FormInput
               id="title"
               label="Board title"
