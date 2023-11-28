@@ -1,10 +1,7 @@
 "use client";
 
-import { useFormState } from "react-dom";
-
-import { Button } from "@/components/ui/button";
-
 import { FormInput } from "@/components/form/form-input";
+import { FormSubmit } from "@/components/form/form-submit";
 import { createBoard } from "@/actions/create-board";
 import { useAction } from "@/hooks/use-action";
 
@@ -29,7 +26,7 @@ export const Form = () => {
       <div className="flex flex-col space-y-2">
         <FormInput label="Board title" id="title" errors={fieldErrors} />
       </div>
-      <Button type="submit">Submit</Button>
+      <FormSubmit>Save</FormSubmit>
     </form>
   );
 };
