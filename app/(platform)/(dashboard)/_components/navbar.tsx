@@ -8,6 +8,7 @@ import { Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { FormPopover } from "@/components/form/form-popover";
 
 import { Logo } from "@/components/logo";
 import { MobileSidebar } from "./mobile-sidebar";
@@ -21,13 +22,15 @@ export const Navbar = () => {
           <Logo />
         </div>
 
-        <Button
-          size="sm"
-          className="rounded-sm md:flex md:gap-x-1 h-auto py-1.5 px-2"
-        >
-          <Plus className="h-4 w-4" />
-          <span className="hidden md:block">Create</span>
-        </Button>
+        <FormPopover align="start" side="bottom" sideOffset={18}>
+          <Button
+            size="sm"
+            className="rounded-sm md:flex md:gap-x-1 h-auto py-1.5 px-2"
+          >
+            <Plus className="h-4 w-4" />
+            <span className="hidden md:block">Create</span>
+          </Button>
+        </FormPopover>
       </div>
 
       <div className="ml-auto flex items-center gap-x-2">
