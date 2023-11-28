@@ -1,5 +1,6 @@
 "use client";
 
+import { ListForm } from "./list-form";
 import type { ListWithCards } from "@/types";
 
 type ListContainerProps = {
@@ -8,5 +9,10 @@ type ListContainerProps = {
 };
 
 export const ListContainer = ({ data, boardId }: ListContainerProps) => {
-  return <div>ListContainer</div>;
+  return (
+    <ol>
+      <ListForm />
+      <div aria-hidden className="flex-shrink-0 w-1" />
+    </ol>
+  );
 };
