@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 const PlatformLayout = ({ children }: PropsWithChildren) => {
   return (
@@ -13,6 +14,7 @@ const PlatformLayout = ({ children }: PropsWithChildren) => {
         },
       }}
     >
+      <Toaster />
       {children}
     </ClerkProvider>
   );
