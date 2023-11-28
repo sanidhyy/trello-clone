@@ -3,6 +3,7 @@
 import { ElementRef, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Board } from "@prisma/client";
+import { useEventListener, useOnClickOutside } from "usehooks-ts";
 
 import { Button } from "@/components/ui/button";
 
@@ -18,6 +19,9 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
   const formRef = useRef<ElementRef<"form">>(null);
   const inputRef = useRef<ElementRef<"input">>(null);
 
+  const [title, setTitle] = useState(data.title);
+  const [isEditing, setIsEditing] = useState(false);
+
   const { execute } = useAction(updateBoard, {
     onSuccess: (data) => {
       toast.success(`Board "${data.title}" updated.`);
@@ -29,9 +33,6 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
     },
   });
 
-  const [title, setTitle] = useState(data.title);
-  const [isEditing, setIsEditing] = useState(false);
-
   const enableEditing = () => {
     setIsEditing(true);
     setTimeout(() => {
@@ -39,17 +40,31 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
       inputRef.current?.select();
     });
   };
+
   const disableEditing = () => {
     setIsEditing(false);
   };
 
-  const onSubmit = (formData: FormData) => {
-    const title = formData.get("title") as string;
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      disableEditing();
+    }
+  };
 
-    execute({
-      title,
-      id: data.id,
-    });
+  useEventListener("keydown", onKeyDown);
+  useOnClickOutside(formRef, disableEditing);
+
+  const onSubmit = (formData: FormData) => {
+    const newTitle = formData.get("title") as string;
+
+    if (title !== newTitle && newTitle.length > 3) {
+      execute({
+        title: newTitle,
+        id: data.id,
+      });
+    } else {
+      disableEditing();
+    }
   };
 
   const onBlur = () => {
