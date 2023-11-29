@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DragDropContext, Droppable } from "@hello-pangea/dnd";
+import { DragDropContext, DropResult, Droppable } from "@hello-pangea/dnd";
 
 import type { ListWithCards } from "@/types";
 import { ListForm } from "./list-form";
@@ -12,6 +12,14 @@ type ListContainerProps = {
   boardId: string;
 };
 
+function reorder<T>(list: T[], startIndex: number, endIndex: number) {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+}
+
 export const ListContainer = ({ data, boardId }: ListContainerProps) => {
   const [orderedData, setOrderedData] = useState(data);
 
@@ -19,8 +27,72 @@ export const ListContainer = ({ data, boardId }: ListContainerProps) => {
     setOrderedData(data);
   }, [data]);
 
+  const onDragEnd = (result: DropResult) => {
+    const { destination, source, type } = result;
+
+    // if no destination
+    if (!destination) return;
+
+    // if dropped in the same position
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    )
+      return;
+
+    // user moves a list
+    if (type === "list") {
+      const items = reorder(orderedData, source.index, destination.index).map(
+        (item, index) => ({ ...item, order: index })
+      );
+
+      setOrderedData(items);
+      // todo: trigger server action
+    }
+
+    // user moves a card
+    if (type === "card") {
+      let newOrderedData = [...orderedData];
+
+      // source and destination list
+      const sourceList = newOrderedData.find(
+        (list) => list.id === source.droppableId
+      );
+
+      const destinationList = newOrderedData.find(
+        (list) => list.id === destination.droppableId
+      );
+
+      if (!sourceList || !destinationList) return;
+
+      // check if cards exists on the source list
+      if (!sourceList.cards) sourceList.cards = [];
+
+      // check if cards exists on the destination list
+      if (!destinationList.cards) destinationList.cards = [];
+
+      // moving the card in the same list
+      if (source.droppableId === destination.droppableId) {
+        const reorderedCards = reorder(
+          sourceList.cards,
+          source.index,
+          destination.index
+        );
+
+        reorderedCards.forEach((card, i) => {
+          card.order = i;
+        });
+
+        sourceList.cards = reorderedCards;
+        setOrderedData(newOrderedData);
+
+        // todo: trigger server action
+      }
+    }
+  };
+
   return (
-    <DragDropContext onDragEnd={() => {}}>
+    <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="lists" type="list" direction="horizontal">
         {(provided) => (
           <ol
