@@ -1,6 +1,8 @@
 "use client";
 
+import { ElementRef, useRef } from "react";
 import { List } from "@prisma/client";
+import { toast } from "sonner";
 import { MoreHorizontal, X } from "lucide-react";
 
 import {
@@ -10,8 +12,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { FormSubmit } from "@/components/form/form-submit";
 import { Separator } from "@/components/ui/separator";
+
+import { FormSubmit } from "@/components/form/form-submit";
+import { deleteList } from "@/actions/delete-list";
+import { useAction } from "@/hooks/use-action";
 
 type ListOptionsProps = {
   data: List;
@@ -19,6 +24,25 @@ type ListOptionsProps = {
 };
 
 export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
+  const closeRef = useRef<ElementRef<"button">>(null);
+
+  const { execute: executeDelete } = useAction(deleteList, {
+    onSuccess: (data) => {
+      toast.success(`List "${data.title}" deleted`);
+      closeRef.current?.click();
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+
+  const onDelete = (formData: FormData) => {
+    const id = formData.get("id") as string;
+    const boardId = formData.get("boardId") as string;
+
+    executeDelete({ id, boardId });
+  };
+
   return (
     <Popover>
       <PopoverTrigger>
@@ -31,7 +55,7 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
         <div className="text-sm font-medium text-center text-neutral-600">
           List actions
         </div>
-        <PopoverClose asChild>
+        <PopoverClose ref={closeRef} asChild>
           <Button
             className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600"
             variant="ghost"
@@ -70,8 +94,10 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
             Copy list...
           </FormSubmit>
         </form>
+
         <Separator />
-        <form action="">
+
+        <form action={onDelete}>
           <input
             type="hidden"
             name="id"
