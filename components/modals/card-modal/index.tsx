@@ -41,15 +41,15 @@ export const CardModal = () => {
               ) : (
                 <Description.Skeleton />
               )}
+              {auditLogsData ? (
+                <Activity data={auditLogsData} />
+              ) : (
+                <Activity.Skeleton />
+              )}
             </div>
           </div>
 
           {cardData ? <Actions data={cardData} /> : <Actions.Skeleton />}
-          {auditLogsData ? (
-            <Activity data={auditLogsData} />
-          ) : (
-            <Activity.Skeleton />
-          )}
         </div>
       </DialogContent>
     </Dialog>
