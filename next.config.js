@@ -16,7 +16,7 @@ const nextConfig = {
     serverActions: {
       allowedOrigins: [
         "localhost:3000",
-        "bug-free-broccoli-557rxgv5wg4fvwgq-3000.app.github.dev",
+        "3000-sanidhyy-trelloclone-uuc93msi73m.ws-us106.gitpod.io",
       ],
     },
   },
