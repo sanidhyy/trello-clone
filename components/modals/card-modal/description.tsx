@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from "sonner";
 import { useState, useRef, ElementRef } from "react";
 import { useParams } from "next/navigation";
 import { useEventListener, useOnClickOutside } from "usehooks-ts";
@@ -14,7 +15,6 @@ import { FormSubmit } from "@/components/form/form-submit";
 import { useAction } from "@/hooks/use-action";
 import { updateCard } from "@/actions/update-card";
 import { CardWithList } from "@/types";
-import { toast } from "sonner";
 
 type DescriptionProps = {
   data: CardWithList;
@@ -64,7 +64,7 @@ export const Description = ({ data }: DescriptionProps) => {
 
   const onSubmit = (formData: FormData) => {
     const description = formData.get("description") as string;
-    const boardId = formData.get("boardId") as string;
+    const boardId = params.boardId as string;
 
     execute({
       id: data.id,
