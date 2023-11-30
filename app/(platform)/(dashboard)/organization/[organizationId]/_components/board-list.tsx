@@ -10,6 +10,7 @@ import { FormPopover } from "@/components/form/form-popover";
 import { db } from "@/lib/db";
 import { getAvailableCount } from "@/lib/org-limit";
 import { MAX_FREE_BOARDS } from "@/constants/boards";
+import { cn } from "@/lib/utils";
 
 export const BoardList = async () => {
   const { orgId } = auth();
@@ -26,6 +27,8 @@ export const BoardList = async () => {
   });
 
   const availableCount = await getAvailableCount();
+
+  const remainingBoards = MAX_FREE_BOARDS - availableCount;
 
   return (
     <div className="space-y-4">
@@ -49,24 +52,28 @@ export const BoardList = async () => {
             <p className="relative font-semibold text-white">{board.title}</p>
           </Link>
         ))}
-        <FormPopover sideOffset={10} side="right">
-          <div
-            role="button"
-            className="aspect-video relative h-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transition"
-          >
-            <p className="text-sm">Create new board</p>
-            <span className="text-xs">{`${
-              MAX_FREE_BOARDS - availableCount
-            } remaining`}</span>
-
-            <Hint
-              sideOffset={40}
-              description={`Free workspaces can have upto 5 open boards. For unlimited boards, please upgrade this workspace.`}
+        <div className="relative aspect-video h-auto md:h-full">
+          <FormPopover sideOffset={10} side="right">
+            <div
+              role="button"
+              className={cn(
+                "h-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transition",
+                remainingBoards === 0 &&
+                  "cursor-not-allowed pointer-events-none select-none"
+              )}
             >
-              <HelpCircle className="absolute bottom-2 right-2 h-[14px] w-[14px]" />
-            </Hint>
-          </div>
-        </FormPopover>
+              <p className="text-sm">Create new board</p>
+              <span className="text-xs">{remainingBoards} remaining</span>
+            </div>
+          </FormPopover>
+          <Hint
+            align="start"
+            sideOffset={1}
+            description={`Free workspaces can have upto 5 open boards. For unlimited boards, please upgrade this workspace.`}
+          >
+            <HelpCircle className="absolute pointer-events-auto bottom-8 md:bottom-2 right-2 h-[14px] w-[14px]" />
+          </Hint>
+        </div>
       </div>
     </div>
   );
