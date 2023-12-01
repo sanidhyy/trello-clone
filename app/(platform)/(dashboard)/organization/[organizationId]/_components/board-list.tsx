@@ -52,28 +52,22 @@ export const BoardList = async () => {
             <p className="relative font-semibold text-white">{board.title}</p>
           </Link>
         ))}
-        <div className="relative aspect-video h-auto md:h-full">
-          <FormPopover sideOffset={10} side="right">
-            <div
-              role="button"
-              className={cn(
-                "h-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transition",
-                remainingBoards === 0 &&
-                  "cursor-not-allowed pointer-events-none select-none"
-              )}
-            >
-              <p className="text-sm">Create new board</p>
-              <span className="text-xs">{remainingBoards} remaining</span>
-            </div>
-          </FormPopover>
-          <Hint
-            align="start"
-            sideOffset={1}
-            description={`Free workspaces can have upto 5 open boards. For unlimited boards, please upgrade this workspace.`}
+        <FormPopover sideOffset={10} side="right">
+          <div
+            role="button"
+            className="relative aspect-video h-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transition"
           >
-            <HelpCircle className="absolute pointer-events-auto bottom-8 md:bottom-2 right-2 h-[14px] w-[14px]" />
-          </Hint>
-        </div>
+            <p className="text-sm">Create new board</p>
+            <span className="text-xs">{remainingBoards} remaining</span>
+            <Hint
+              align="start"
+              sideOffset={1}
+              description={`Free workspaces can have upto 5 open boards. For unlimited boards, please upgrade this workspace.`}
+            >
+              <HelpCircle className="absolute bottom-2 right-2 h-[14px] w-[14px]" />
+            </Hint>
+          </div>
+        </FormPopover>
       </div>
     </div>
   );
