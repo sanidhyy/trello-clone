@@ -53,7 +53,6 @@ export const ProModal = () => {
 
           <Button
             className="w-full"
-            variant="primary"
             disabled={isLoading}
             onClick={onClick}
           >
