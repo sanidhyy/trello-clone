@@ -11,6 +11,7 @@ import { db } from "@/lib/db";
 import { createSafeAction } from "@/lib/create-safe-action";
 import { createAuditLog } from "@/lib/create-audit-log";
 import { decreaseAvailableCount } from "@/lib/org-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
@@ -20,6 +21,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       error: "Unauthorized",
     };
   }
+
+  const isPro = await checkSubscription();
 
   const { id } = data;
 
@@ -34,7 +37,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     });
 
     // decrement board count/increase board limit
-    await decreaseAvailableCount();
+    if (!isPro) await decreaseAvailableCount();
 
     // create new activity log
     await createAuditLog({
