@@ -1,3 +1,12 @@
+const prod = process.env.NODE_ENV === "production";
+
+const withPWA = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: !prod,
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -14,10 +23,7 @@ const nextConfig = {
   },
   experimental: {
     serverActions: {
-      allowedOrigins: [
-        "localhost:3000",
-        "3000-sanidhyy-trelloclone-uuc93msi73m.ws-us106.gitpod.io",
-      ],
+      allowedOrigins: ["localhost:3000"],
     },
   },
 };
