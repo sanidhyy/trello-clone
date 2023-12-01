@@ -8,10 +8,19 @@ const headingFont = localFont({
   src: "../public/fonts/font.woff2",
 });
 
-export const Logo = () => {
+type LogoProps = {
+  isMobile?: boolean;
+};
+
+export const Logo = ({ isMobile }: LogoProps) => {
   return (
     <Link href="/">
-      <div className="hover:opacity-75 transition items-center gap-x-2 hidden md:flex">
+      <div
+        className={cn(
+          !isMobile && "hidden",
+          `hover:opacity-75 transition items-center gap-x-2 flex`
+        )}
+      >
         <Image
           src="/logo.svg"
           alt="taskify logo"
