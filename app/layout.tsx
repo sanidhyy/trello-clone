@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   manifest: "/manifest.json",
+  authors: {
+    name: "Sanidhya Kumar Verma",
+    url: "https://github.com/sanidhyy",
+  },
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
