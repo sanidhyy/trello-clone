@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
@@ -7,18 +7,18 @@ import { siteConfig } from "@/config/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const viewport: Viewport = {
+  themeColor: "#171717",
+};
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  icons: [
-    {
-      url: "/logo.svg",
-      href: "/logo.svg",
-    },
-  ],
+  keywords: siteConfig.keywords,
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
