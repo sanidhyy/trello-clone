@@ -221,6 +221,7 @@ You might encounter some bugs while using this app. You are more than welcome to
 
 Useful resources and libraries that are used in My Portfolio
 
+- Thanks to CodeWithAntonio: https://codewithantonio.com/
 - [Clerk](https://clerk.com/ "Clerk")
 - [ShadCN UI](https://shadcn.com/ "ShadCN UI")
 - [CLSX](https://www.npmjs.com/package/clsx "CLSX")
