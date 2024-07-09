@@ -165,9 +165,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 9. **Prisma Database URL**:
 
-   - `DATABASE_URL` is the connection URL for your Aiven MySQL database. You will need to create a Aiven account (https://aiven.io/) or use an existing one. Obtain the connection URL from your Aiven dashboard.
-
-![Copy Aiven MySQL Database Auth URL](/.github/images/step_aiven.png "Copy Aiven MySQL Database Auth URL")
+   - `DATABASE_URL` is the connection URL for your Supabase PostgreSQL database. You will need to create a Supabase account (https://supabase.com/) or use an existing one. Obtain the connection URL from your Supabase dashboard after creating a new project.
 
 10. **Public App URL**:
 
