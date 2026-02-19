@@ -16,8 +16,8 @@ type BoardTitleFormProps = {
 };
 
 export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
-  const formRef = useRef<ElementRef<"form">>(null);
-  const inputRef = useRef<ElementRef<"input">>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [title, setTitle] = useState(data.title);
   const [isEditing, setIsEditing] = useState(false);
@@ -52,7 +52,7 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
   };
 
   useEventListener("keydown", onKeyDown);
-  useOnClickOutside(formRef, disableEditing);
+  useOnClickOutside(formRef as React.RefObject<HTMLElement>, disableEditing);
 
   const onSubmit = (formData: FormData) => {
     const newTitle = formData.get("title") as string;

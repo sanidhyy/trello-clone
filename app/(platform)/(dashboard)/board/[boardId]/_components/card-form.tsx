@@ -23,7 +23,7 @@ type CardFormProps = {
 export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
   ({ listId, enableEditing, disableEditing, isEditing }, ref) => {
     const params = useParams();
-    const formRef = useRef<ElementRef<"form">>(null);
+    const formRef = useRef<HTMLFormElement>(null);
 
     const { execute, fieldErrors } = useAction(createCard, {
       onSuccess: (data) => {
@@ -49,11 +49,11 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
       execute({ title, listId, boardId });
     };
 
-    useOnClickOutside(formRef, disableEditing);
+    useOnClickOutside(formRef as React.RefObject<HTMLElement>, disableEditing);
     useEventListener("keydown", onKeyDown);
 
     const onTextareaKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (
-      e
+      e,
     ) => {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
@@ -102,7 +102,7 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
         </Button>
       </div>
     );
-  }
+  },
 );
 
 CardForm.displayName = "CardForm";

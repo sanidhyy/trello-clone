@@ -4,10 +4,11 @@ import { auth } from "@clerk/nextjs";
 import { db } from "@/lib/db";
 
 export async function GET(
-  req: Request,
-  { params }: { params: { cardId: string } }
+  _req: Request,
+  { params }: { params: Promise<{ cardId: string }> },
 ) {
   try {
+    const { cardId } = await params;
     const { userId, orgId } = auth();
 
     if (!userId || !orgId)
@@ -15,7 +16,7 @@ export async function GET(
 
     const card = await db.card.findUnique({
       where: {
-        id: params.cardId,
+        id: cardId,
         list: {
           board: {
             orgId,

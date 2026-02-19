@@ -7,15 +7,16 @@ import { db } from "@/lib/db";
 export async function generateMetadata({
   params,
 }: {
-  params: { boardId: string };
+  params: Promise<{ boardId: string }>;
 }) {
+  const { boardId } = await params;
   const { orgId } = auth();
 
   if (!orgId) return { title: "Board" };
 
   const board = await db.board.findUnique({
     where: {
-      id: params.boardId,
+      id: boardId,
       orgId,
     },
   });
@@ -30,15 +31,16 @@ const BoardIdLayout = async ({
   params,
 }: {
   children: React.ReactNode;
-  params: { boardId: string };
+  params: Promise<{ boardId: string }>;
 }) => {
+  const { boardId } = await params;
   const { orgId } = auth();
 
   if (!orgId) redirect("/select-org");
 
   const board = await db.board.findUnique({
     where: {
-      id: params.boardId,
+      id: boardId,
       orgId,
     },
   });
