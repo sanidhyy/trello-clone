@@ -43,6 +43,8 @@
 
 Here is the folder structure of this app.
 
+<!--- FOLDER_STRUCTURE_START --->
+
 ```bash
 trello-clone/
   |- actions/
@@ -103,6 +105,8 @@ trello-clone/
   |- types.ts
 ```
 
+<!--- FOLDER_STRUCTURE_END --->
+
 <br />
 
 ## :toolbox: Getting Started
@@ -151,7 +155,6 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 ![Copy Stripe Secret Key](/.github/images/step_stripe.png "Copy Stripe Secret Key")
 
 7. **Stripe Webhook Secret**:
-
    - `STRIPE_WEBHOOK_SECRET` is required for handling Stripe webhooks securely. Follow these steps to obtain the webhook secret:
      - Sign in to your Stripe account (https://dashboard.stripe.com/).
      - In the Dashboard, go to "Developers" > "Webhooks".
@@ -160,19 +163,15 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
      - After saving, you'll see the webhook signing secret. Copy this value to use as `STRIPE_WEBHOOK_SECRET`.
 
 8. **URLs for Clerk**:
-
    - `NEXT_PUBLIC_CLERK_SIGN_IN_URL`, `NEXT_PUBLIC_CLERK_SIGN_UP_URL`, `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL`, and `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL` are endpoints or URLs related to your Clerk setup. You can configure these in your Clerk dashboard.
 
 9. **Prisma Database URL**:
-
    - `DATABASE_URL` is the connection URL for your Supabase PostgreSQL database. You will need to create a Supabase account (https://supabase.com/) or use an existing one. Obtain the connection URL from your Supabase dashboard after creating a new project.
 
 10. **Public App URL**:
-
     - `NEXT_PUBLIC_APP_URL` are endpoints or URLs related to this Project. You can configure/copy this from your needs.
 
 11. **Unsplash API Key**:
-
     - Sign up on [Unsplash](https://unsplash.com/) if you haven't already.
     - Join the Unsplash Developer Community [here](https://unsplash.com/developers).
     - Create a new application in the [Developer Dashboard](https://unsplash.com/oauth/applications).
@@ -182,14 +181,6 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 12. Open terminal in root directory. Run npm install or yarn install.
 
 13. Now app is fully configured 👍 and you can start using this app using npm run dev or yarn dev.
-
-### :books: Additional Resources
-
-- Clerk Documentation: https://www.clerk.dev/docs/
-- Stripe Documentation: https://stripe.com/docs/
-- Unsplash Documentation: https://unsplash.com/documentation/
-- Aiven Documentation: https://docs.aiven.io/
-- Prisma Documentation: https://www.prisma.io/docs/
 
 **NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
 
@@ -220,6 +211,7 @@ You might encounter some bugs while using this app. You are more than welcome to
 Useful resources and libraries that are used in My Portfolio
 
 - Thanks to CodeWithAntonio: https://codewithantonio.com/
+<!--- DEPENDENCIES_START --->
 - [Clerk](https://clerk.com/ "Clerk")
 - [ShadCN UI](https://shadcn.com/ "ShadCN UI")
 - [CLSX](https://www.npmjs.com/package/clsx "CLSX")
@@ -234,6 +226,7 @@ Useful resources and libraries that are used in My Portfolio
 - [Prettier](https://prettier.io/ "Prettier")
 - [ESLint](https://eslint.org/ "ESLint")
 - [Next PWA](https://github.com/shadowwalker/next-pwa#readme "Next PWA")
+<!--- DEPENDENCIES_END --->
 
 ## :coffee: Buy Me a Coffee
 
