@@ -44,7 +44,6 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
-
 ```bash
 trello-clone/
   |- actions/
@@ -65,46 +64,60 @@ trello-clone/
   |- app/
     |-- (marketing)/
     |-- (platform)/
-        |--- (clerk)/
-            |---- select-org/[[...select-org]]/
-            |---- sign-in/[[...sign-in]]/
-            |---- sign-up/[[...sign-up]]/
-        |--- (dashboard)/
-            |---- board/
-            |---- organization/
     |-- api/
-        |--- cards/[cardId]/
-        |--- webhook/
+    |-- apple-icon.png
+    |-- favicon.ico
+    |-- globals.css
+    |-- icon1.png
+    |-- icon2.png
+    |-- layout.tsx
   |- components/
-        |--- form/
-        |--- modals/
-            |---- card-modal/
-        |--- providers/
-        |--- ui/
+    |-- form/
+    |-- modals/
+    |-- providers/
+    |-- ui/
+    |-- activity-item.tsx
+    |-- hint.tsx
+    |-- logo.tsx
   |- config/
+    |-- site.ts
   |- constants/
+    |-- boards.ts
+    |-- images.ts
   |- hooks/
+    |-- use-action.ts
+    |-- use-card-modal.ts
+    |-- use-mobile-sidebar.ts
+    |-- use-pro-modal.ts
   |- lib/
+    |-- create-audit-log.ts
+    |-- create-safe-action.ts
+    |-- db.ts
+    |-- fetcher.ts
+    |-- generate-log-messages.ts
+    |-- org-limit.ts
+    |-- stripe.ts
+    |-- subscription.ts
+    |-- unsplash.ts
+    |-- utils.ts
   |- prisma/
     |-- schema.prisma
   |- public/
-    |-- fonts/
-    |-- icons/
-  |- .env
   |- .env.example
+  |- .env/.env.local
   |- .eslintrc.json
   |- .gitignore
+  |- bun.lock
   |- components.json
   |- middleware.ts
   |- next.config.js
-  |- package-lock.json
   |- package.json
   |- postcss.config.js
   |- tailwind.config.ts
   |- tsconfig.json
   |- types.ts
+  |- vercel.ts
 ```
-
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
@@ -212,20 +225,48 @@ Useful resources and libraries that are used in My Portfolio
 
 - Thanks to CodeWithAntonio: https://codewithantonio.com/
 <!--- DEPENDENCIES_START --->
-- [Clerk](https://clerk.com/ "Clerk")
-- [ShadCN UI](https://shadcn.com/ "ShadCN UI")
-- [CLSX](https://www.npmjs.com/package/clsx "CLSX")
-- [Usehooks TS](https://usehooks-ts.com/ "Usehooks TS")
-- [Unsplash JS](https://github.com/unsplash/unsplash-js#readme "Unsplash JS")
-- [Date FNS](https://date-fns.org/ "Date FNS")
-- [Stripe](https://stripe.com/ "Stripe")
-- [Recharts](https://recharts.org/ "Recharts")
-- [ZOD](https://zod.dev/ "ZOD")
-- [Sonner](https://sonner.emilkowal.ski/ "Sonner")
-- [Lucide Icons](https://lucide.dev/ "Lucide Icons")
-- [Prettier](https://prettier.io/ "Prettier")
-- [ESLint](https://eslint.org/ "ESLint")
-- [Next PWA](https://github.com/shadowwalker/next-pwa#readme "Next PWA")
+- [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^4.31.5
+- [@hello-pangea/dnd](https://www.npmjs.com/package/@hello-pangea/dnd): ^16.6.0
+- [@prisma/client](https://www.npmjs.com/package/@prisma/client): ^5.22.0
+- [@radix-ui/react-accordion](https://www.npmjs.com/package/@radix-ui/react-accordion): ^1.2.12
+- [@radix-ui/react-avatar](https://www.npmjs.com/package/@radix-ui/react-avatar): ^1.1.11
+- [@radix-ui/react-dialog](https://www.npmjs.com/package/@radix-ui/react-dialog): ^1.1.15
+- [@radix-ui/react-label](https://www.npmjs.com/package/@radix-ui/react-label): ^2.1.8
+- [@radix-ui/react-popover](https://www.npmjs.com/package/@radix-ui/react-popover): ^1.1.15
+- [@radix-ui/react-separator](https://www.npmjs.com/package/@radix-ui/react-separator): ^1.1.8
+- [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.2.4
+- [@radix-ui/react-tooltip](https://www.npmjs.com/package/@radix-ui/react-tooltip): ^1.2.8
+- [@tanstack/react-query](https://www.npmjs.com/package/@tanstack/react-query): ^5.90.21
+- [@types/lodash](https://www.npmjs.com/package/@types/lodash): ^4.17.23
+- [@types/node](https://www.npmjs.com/package/@types/node): ^25.2.3
+- [@types/react](https://www.npmjs.com/package/@types/react): ^19.2.14
+- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): ^19.2.3
+- [@vercel/config](https://www.npmjs.com/package/@vercel/config): ^0.0.33
+- [autoprefixer](https://www.npmjs.com/package/autoprefixer): ^10.4.24
+- [class-variance-authority](https://www.npmjs.com/package/class-variance-authority): ^0.7.1
+- [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
+- [date-fns](https://www.npmjs.com/package/date-fns): ^4.1.0
+- [eslint](https://www.npmjs.com/package/eslint): ^8
+- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 14.0.3
+- [lodash](https://www.npmjs.com/package/lodash): ^4.17.23
+- [lucide-react](https://www.npmjs.com/package/lucide-react): ^0.574.0
+- [next](https://www.npmjs.com/package/next): 15.5.10
+- [next-pwa](https://www.npmjs.com/package/next-pwa): ^5.6.0
+- [postcss](https://www.npmjs.com/package/postcss): ^8
+- [prisma](https://www.npmjs.com/package/prisma): ^5.6.0
+- [react](https://www.npmjs.com/package/react): ^19.2.4
+- [react-dom](https://www.npmjs.com/package/react-dom): ^19.2.4
+- [sonner](https://www.npmjs.com/package/sonner): ^2.0.7
+- [stripe](https://www.npmjs.com/package/stripe): ^20.3.1
+- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^2.0.0
+- [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^3.3.0
+- [tailwindcss-animate](https://www.npmjs.com/package/tailwindcss-animate): ^1.0.7
+- [typescript](https://www.npmjs.com/package/typescript): ^5.9.3
+- [unsplash-js](https://www.npmjs.com/package/unsplash-js): ^7.0.20
+- [usehooks-ts](https://www.npmjs.com/package/usehooks-ts): ^3.1.1
+- [zod](https://www.npmjs.com/package/zod): ^4.3.6
+- [zustand](https://www.npmjs.com/package/zustand): ^5.0.11
+
 <!--- DEPENDENCIES_END --->
 
 ## :coffee: Buy Me a Coffee
