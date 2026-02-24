@@ -213,7 +213,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 ## :wrench: Stats
 
-[![Stats for Taskify](/.github/images/stats.svg "Stats for Taskify")](https://pagespeed-insights-svg.glitch.me/?url=https://app-taskify.vercel.app/ "Stats for Taskify")
+[![Stats for Taskify](/.github/images/stats.svg "Stats for Taskify")](https://pagespeed.web.dev/analysis?url=https://app-taskify.vercel.app/ "Stats for Taskify")
 
 ## :raised_hands: Contribute
 
