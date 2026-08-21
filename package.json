@@ -4,7 +4,7 @@
   "private": true,
   "author": {
     "name": "Sanidhya Kumar Verma",
-    "email": "sanidhya.verma12345@gmail.com",
+    "email": "sanidhyyy@gmail.com",
     "url": "https://github.com/sanidhyy"
   },
   "description": "Collaborate, manage projects and reach new productivity peaks.",
@@ -51,7 +51,7 @@
   "homepage": "https://github.com/sanidhyy/trello-clone#readme",
   "bugs": {
     "url": "https://github.com/sanidhyy/trello-clone/issues",
-    "email": "sanidhya.verma12345@gmail.com"
+    "email": "sanidhyyy@gmail.com"
   },
   "scripts": {
     "dev": "next dev",
