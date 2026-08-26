@@ -1,3 +1,8 @@
 {
-  "prisma.pinToPrisma6": true
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "prisma.pinToPrisma6": true,
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true
 }
