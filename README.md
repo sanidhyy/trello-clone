@@ -44,6 +44,7 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
+
 ```bash
 trello-clone/
   |- actions/
@@ -118,6 +119,7 @@ trello-clone/
   |- types.ts
   |- vercel.ts
 ```
+
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
@@ -191,9 +193,9 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
     - Obtain your `Access Key` from the created application.
     - Set the `NEXT_PUBLIC_UNSPLASH_ACCESS_KEY` environment variable in your project with the obtained key.
 
-12. Open terminal in root directory. Run npm install or yarn install.
+12. Open terminal in root directory. Run `npm install` or `pnpm install`.
 
-13. Now app is fully configured 👍 and you can start using this app using npm run dev or yarn dev.
+13. Now app is fully configured 👍 and you can start using this app using `npm run dev` or `pnpm dev`.
 
 **NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
 

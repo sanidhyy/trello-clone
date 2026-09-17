@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
+.pnpm-store
 .pnp.js
 .yarn/install-state.gz
 
@@ -26,8 +27,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
-.env
+.env*
+!.env.example
 
 # gitpod
 .gitpod.yml
