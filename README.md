@@ -148,7 +148,7 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
 DATABASE_URL=<your-db-url>
 
 # unsplash api key
-NEXT_PUBLIC_UNSPLASH_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+UNSPLASH_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 # stripe api & webhook key
 STRIPE_API_KEY=sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -190,7 +190,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
     - Join the Unsplash Developer Community [here](https://unsplash.com/developers).
     - Create a new application in the [Developer Dashboard](https://unsplash.com/oauth/applications).
     - Obtain your `Access Key` from the created application.
-    - Set the `NEXT_PUBLIC_UNSPLASH_ACCESS_KEY` environment variable in your project with the obtained key.
+    - Set the `UNSPLASH_ACCESS_KEY` environment variable in your project with the obtained key. This key is server-only and must not be prefixed with `NEXT_PUBLIC_`.
 
 12. Open terminal in root directory. Run `npm install` or `pnpm install`.
 

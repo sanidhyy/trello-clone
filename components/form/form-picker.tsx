@@ -6,9 +6,9 @@ import { useFormStatus } from "react-dom";
 import { Check, Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
-import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
 import { defaultImages } from "@/constants/images";
+import { fetcher } from "@/lib/fetcher";
 import Link from "next/link";
 import { FormErrors } from "./form-errors";
 
@@ -19,13 +19,10 @@ type FormPickerProps = {
 
 const fetchUnsplashImages = async () => {
   try {
-    const result = await unsplash.photos.getRandom({
-      collectionIds: ["317099"],
-      count: 9,
-    });
+    const images = await fetcher("/api/unsplash");
 
-    if (result && result.response) {
-      return result.response as Array<Record<string, any>>;
+    if (Array.isArray(images) && images.length) {
+      return images as Array<Record<string, any>>;
     }
 
     console.error("Failed to get images from Unsplash.");
