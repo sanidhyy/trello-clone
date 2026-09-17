@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useFormStatus } from "react-dom";
 import { Check, Loader2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 
 import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
@@ -16,36 +17,35 @@ type FormPickerProps = {
   errors?: Record<string, string[] | undefined>;
 };
 
+const fetchUnsplashImages = async () => {
+  try {
+    const result = await unsplash.photos.getRandom({
+      collectionIds: ["317099"],
+      count: 9,
+    });
+
+    if (result && result.response) {
+      return result.response as Array<Record<string, any>>;
+    }
+
+    console.error("Failed to get images from Unsplash.");
+  } catch (error) {
+    console.error(error);
+  }
+
+  return defaultImages;
+};
+
 export const FormPicker = ({ id, errors }: FormPickerProps) => {
   const { pending } = useFormStatus();
-  const [images, setImages] = useState<Array<Record<string, any>>>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [selectedImageId, setSelectedImageId] = useState(null);
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const result = await unsplash.photos.getRandom({
-          collectionIds: ["317099"],
-          count: 9,
-        });
-
-        if (result && result.response) {
-          const newImages = result.response as Array<Record<string, any>>;
-          setImages(newImages);
-        } else {
-          console.error("Failed to get images from Unsplash.");
-        }
-      } catch (error) {
-        console.error(error);
-        setImages(defaultImages);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchImages();
-  }, []);
+  const { data: images = [], isLoading } = useQuery({
+    queryKey: ["unsplash-board-images"],
+    queryFn: fetchUnsplashImages,
+    staleTime: Infinity,
+    gcTime: Infinity,
+  });
   if (isLoading) {
     return (
       <div className="p-6 flex items-center justify-center">
