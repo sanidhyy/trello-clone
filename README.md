@@ -44,7 +44,6 @@
 Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
-
 ```bash
 trello-clone/
   |- actions/
@@ -108,18 +107,18 @@ trello-clone/
   |- .env/.env.local
   |- .eslintrc.json
   |- .gitignore
-  |- bun.lock
   |- components.json
   |- middleware.ts
   |- next.config.js
   |- package.json
+  |- pnpm-lock.yaml
+  |- pnpm-workspace.yaml
   |- postcss.config.js
   |- tailwind.config.ts
   |- tsconfig.json
   |- types.ts
   |- vercel.ts
 ```
-
 <!--- FOLDER_STRUCTURE_END --->
 
 <br />
