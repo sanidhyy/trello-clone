@@ -235,7 +235,7 @@ Useful resources and libraries that are used in My Portfolio
 - Thanks to CodeWithAntonio: https://codewithantonio.com/
 <!--- DEPENDENCIES_START --->
 - [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^4.31.5
-- [@hello-pangea/dnd](https://www.npmjs.com/package/@hello-pangea/dnd): ^16.6.0
+- [@hello-pangea/dnd](https://www.npmjs.com/package/@hello-pangea/dnd): ^18.0.1
 - [@prisma/client](https://www.npmjs.com/package/@prisma/client): ^5.22.0
 - [@radix-ui/react-accordion](https://www.npmjs.com/package/@radix-ui/react-accordion): ^1.2.12
 - [@radix-ui/react-avatar](https://www.npmjs.com/package/@radix-ui/react-avatar): ^1.1.11
