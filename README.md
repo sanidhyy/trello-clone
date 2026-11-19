@@ -274,7 +274,7 @@ Useful resources and libraries that are used in My Portfolio
 - [unsplash-js](https://www.npmjs.com/package/unsplash-js): ^7.0.20
 - [usehooks-ts](https://www.npmjs.com/package/usehooks-ts): ^3.1.1
 - [zod](https://www.npmjs.com/package/zod): ^4.3.6
-- [zustand](https://www.npmjs.com/package/zustand): ^5.0.11
+- [zustand](https://www.npmjs.com/package/zustand): ^5.1.0
 
 <!--- DEPENDENCIES_END --->
 
