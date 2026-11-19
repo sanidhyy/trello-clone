@@ -256,7 +256,7 @@ Useful resources and libraries that are used in My Portfolio
 - [clsx](https://www.npmjs.com/package/clsx): ^2.1.1
 - [date-fns](https://www.npmjs.com/package/date-fns): ^4.1.0
 - [eslint](https://www.npmjs.com/package/eslint): ^8
-- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 14.0.3
+- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 15.5.29
 - [lodash](https://www.npmjs.com/package/lodash): ^4.17.23
 - [lucide-react](https://www.npmjs.com/package/lucide-react): ^0.574.0
 - [next](https://www.npmjs.com/package/next): 15.5.24
